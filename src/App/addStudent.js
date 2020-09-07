@@ -13,16 +13,10 @@ class AddStudent extends Component {
       })
         .then((Response) => {
           if (Response.status === 200) {
-            Promise.resolve();
+            this.props.refresh();
           } else {
             Promise.reject();
           }
-        })
-        .then((jsonData) => {
-          this.setState({
-            data: jsonData,
-          });
-          this.props.refresh();
         });
 
       this.setState({

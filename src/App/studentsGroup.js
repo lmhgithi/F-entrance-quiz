@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../style/studentsGroup.scss';
-
+import EditableTeamName from './EditableTeamName'
 class studentsGroup extends Component {
   state = {
     data: {},
@@ -30,34 +30,29 @@ class studentsGroup extends Component {
       <div className="students-group">
         <div className="group-header">
           <h2>分组列表</h2>
-          <button className='group-button'
-            onClick={() => this.handleClick()}
-          >分组学员</button>
+          <button className="group-button" onClick={() => this.handleClick()}>
+            分组学员
+          </button>
         </div>
 
-        
-            {
-                Object.keys(this.state.data).map(key => (
-                  <div
-                    className='group'
-                    key={key}
-                  >
-                    <h3 className='team-name'
-                    >{this.state.data[key].groupName}</h3>
-                    <div className="students-group-content">
-                    {
-                      Object.keys(this.state.data[key].students).map(childrenKey => (
-                        <p className='student' key={`${childrenKey}-group`}
-                        >{`${this.state.data[key].students[childrenKey].num}.
+        {Object.keys(this.state.data).map((key) => (
+          <div className="group" key={key}>
+            <EditableTeamName 
+              teamName={this.state.data[key].groupName}
+            />
+
+            <div className="students-group-content">
+              {Object.keys(this.state.data[key].students).map((childrenKey) => (
+                <p
+                  className="student"
+                  key={`${childrenKey}-group`}
+                >{`${this.state.data[key].students[childrenKey].num}.
                          ${this.state.data[key].students[childrenKey].name}`}</p>
-                      ))
-                    }
-                    </div>
-                  </div>
-                ))
-            }
-        </div>
-      
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     );
   }
 }
