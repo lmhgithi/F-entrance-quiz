@@ -26,7 +26,6 @@ class studentsList extends Component {
     }
 
   render() {
-    // console.log(this.state.data)
     return (
       <div className="students-list">
         <h2>学员列表</h2>
@@ -34,7 +33,7 @@ class studentsList extends Component {
             {
                 Object.keys(this.state.data).map(key => (
                 <p className='student' key={key}>
-                    {`${key}. ${this.state.data[key]}`}
+                    {`${this.state.data[key].num}. ${this.state.data[key].name}`}
                 </p>
                 ))
             }
