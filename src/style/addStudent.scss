@@ -1,21 +1,4 @@
-
-.students-list-content {
-    display: flex;
-    flex-flow: row wrap;
-    
-}
-
-.student {
-    background-color: #eeeeee;
-    width: 100px;
-    height: 30px;
-    margin: 5px 10px;
-    text-align: center;
-    padding: 2px;
-    font-weight: bold;
-}
-
-.student-add {
+.add-students-botton {
     border-style: solid;
     border-color: #929aab;
     border-width: 1px;
@@ -30,7 +13,7 @@
     }
 }
 
-.student-add-input {
+.add-students-input-box {
     width: 100px;
     height: 25px;
     margin: 5px 10px;

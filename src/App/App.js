@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import './App.scss';
-import StudentsList from './studentsList';
-import StudentsGroup from './studentsGroup';
+import Groups from './Groups';
+import Students from './Students';
+import '../style/App.scss';
 
 class App extends Component {
   render() {
     return (
       <div data-testid="app" className="App">
         <body>
-          <StudentsGroup />
-          <StudentsList />
+          <Groups />
+          <Students />
         </body>
       </div>
     );

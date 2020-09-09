@@ -1,56 +1,58 @@
 import React, { Component } from 'react';
+import '../style/addStudent.scss';
+
 
 class AddStudent extends Component {
   state = {
-    input: false,
-    inputName: '',
+    displayInputBox: false,
+    studentName: '',
   };
-  handleSubmit = (event) => {
-    if (event.keyCode == 13) {
-      URL = `http://localhost:8080/student/${this.state.inputName}`;
+  addStudent = (keyCode) => {
+    if (keyCode == 13) {
+      URL = `http://localhost:8080/students/${this.state.studentName}`;
       fetch(URL, {
         method: 'POST',
       })
         .then((Response) => {
           if (Response.status === 200) {
-            this.props.refresh();
+            this.props.getStudents();
           } else {
             Promise.reject();
           }
         });
 
       this.setState({
-        input: false,
-        inputName: '',
+        displayInputBox: false,
+        studentName: '',
       });
     }
   };
 
-  handleClick = () => {
+  displayAddStudent = () => {
     this.setState({
-      input: true,
+      displayInputBox: true,
     });
   };
 
   handleChange = () => {
       this.setState({
-          inputName: event.target.value,
+        studentName: event.target.value,
       })
   }
   render() {
-    if (this.state.input) {
+    if (this.state.displayInputBox) {
       return (
-        <input className="student-add-input" 
+        <input className="add-students-input-box" 
         name='name'
-        onKeyDown={() => this.handleSubmit(event)}
-        value={this.state.inputName}
+        onKeyUp={() => this.addStudent(event.keyCode)}
+        value={this.state.studentName}
         onChange={() => this.handleChange()}
         />
             
       );
     } else {
       return (
-        <p className="student-add" onClick={() => this.handleClick()}>
+        <p className="add-students-botton" onClick={() => this.displayAddStudent()}>
           +添加学员
         </p>
       );
